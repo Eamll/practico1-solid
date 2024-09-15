@@ -5,7 +5,7 @@ import { DataSource } from 'typeorm';
 import { Producto } from './models/Producto';
 import { createProducto, getAllProductos, getProductoById, updateProducto, deleteProducto } from './controllers/producto.controller';
 import { AppDataSource } from './db/AppDataSource';
-
+import path from 'path';
 dotenv.config();
 
 const app: Express = express();
@@ -25,8 +25,9 @@ AppDataSource.initialize()
 
 // Routes
 app.get('/', (req: Request, res: Response) => {
-    res.send('Hello, World!');
+    res.sendFile(path.join(__dirname, 'view', 'index.html'));
 });
+
 
 // CRUD endpoints for Producto
 app.post('/productos', createProducto);

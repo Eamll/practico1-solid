@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Product</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      form {
+        display: grid;
+        gap: 10px;
+      }
+      label {
+        font-weight: bold;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 5px;
+      }
+      button {
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Create Product</h1>
+    <form id="createProductForm">
+      <label for="sku">SKU:</label>
+      <input type="text" id="sku" name="sku" />
+
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required />
+
+      <label for="nombreExtranjero">Nombre Extranjero:</label>
+      <input type="text" id="nombreExtranjero" name="nombreExtranjero" />
+
+      <label for="codGrupoProducto">Código Grupo Producto:</label>
+      <input type="text" id="codGrupoProducto" name="codGrupoProducto" />
+
+      <label for="nombreGrupoProducto">Nombre Grupo Producto:</label>
+      <input type="text" id="nombreGrupoProducto" name="nombreGrupoProducto" />
+
+      <label for="skuFabricante">SKU Fabricante:</label>
+      <input type="text" id="skuFabricante" name="skuFabricante" />
+
+      <label for="nmbFabricante">Nombre Fabricante:</label>
+      <input type="text" id="nmbFabricante" name="nmbFabricante" />
+
+      <label for="nmbProveedor">Nombre Proveedor:</label>
+      <input type="text" id="nmbProveedor" name="nmbProveedor" />
+
+      <label for="peso">Peso:</label>
+      <input type="number" id="peso" name="peso" step="0.01" />
+
+      <label for="um">Unidad de Medida:</label>
+      <input type="text" id="um" name="um" />
+
+      <label for="precioLista">Precio Lista:</label>
+      <input type="number" id="precioLista" name="precioLista" step="0.01" />
+
+      <label for="codBarra">Código de Barra:</label>
+      <input type="text" id="codBarra" name="codBarra" />
+
+      <label for="skuAlternante">SKU Alternante:</label>
+      <input type="text" id="skuAlternante" name="skuAlternante" />
+
+      <button type="submit">Create Product</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("createProductForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          const productData = Object.fromEntries(formData.entries());
+
+          try {
+            const response = await fetch("/api/productos", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(productData)
+            });
+
+            if (response.ok) {
+              alert("Product created successfully!");
+              e.target.reset();
+            } else {
+              alert("Error creating product. Please try again.");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again.");
+          }
+        });
+    </script>
+  </body>
+</html>

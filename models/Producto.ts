@@ -9,40 +9,40 @@ export class Producto {
     @Column({ nullable: true })
     sku: string;
 
-    @Column()
+    @Column("text")
     nombre: string;
 
-    @Column({ nullable: true })
+    @Column("text", { nullable: true })
     nombreExtranjero: string;
 
-    @Column({ nullable: true })
+    @Column("text", { nullable: true })
     codGrupoProducto: string;
 
-    @Column({ nullable: true })
+    @Column("text", { nullable: true })
     nombreGrupoProducto: string;
 
-    @Column({ nullable: true })
+    @Column("text", { nullable: true })
     skuFabricante: string;
 
-    @Column({ nullable: true })
+    @Column("text", { nullable: true })
     nmbFabricante: string;
 
-    @Column({ nullable: true })
+    @Column("text", { nullable: true })
     nmbProveedor: string;
 
     @Column("float", { nullable: true })
     peso: number;
 
-    @Column({ nullable: true })
-    um: string;
+    @Column("text", { nullable: true })
+    unidadMedida: string;
 
     @Column("float", { nullable: true })
     precioLista: number;
 
-    @Column({ nullable: true })
+    @Column("text", { nullable: true })
     codBarra: string;
 
-    @Column({ nullable: true })
+    @Column("text", { nullable: true })
     skuAlternante: string;
 
     // You can keep the methods as they are, or implement them as needed
