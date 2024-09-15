@@ -1,50 +1,48 @@
+import { Entity, Column, PrimaryColumn } from "typeorm";
+
+@Entity()
 export class Producto {
-    private sku: string;
-    private nombre: string;
-    private nombreExtranjero: string;
-    private codGrupoProducto: string;
-    private nombreGrupoProducto: string;
-    private skuFabricante: string;
-    private nmbFabricante: string;
-    private nmbProveedor: string;
-    private peso: number;
-    private um: string;
-    private precioLista: number;
-    private codBarra: string;
-    private skuAlternante: string;
+    @PrimaryColumn()
+    sku: string;
 
-    public get getSku(): string { return this.sku; }
-    public set setSku(value: string) { this.sku = value; }
+    @Column()
+    nombre: string;
 
-    public get getNombre(): string { return this.nombre; }
-    public set setNombre(value: string) { this.nombre = value; }
+    @Column({ nullable: true })
+    nombreExtranjero: string;
 
-    public get getSkuFabricante(): string { return this.skuFabricante; }
-    public set setSkuFabricante(value: string) { this.skuFabricante = value; }
+    @Column({ nullable: true })
+    codGrupoProducto: string;
 
-    public get getNmbFabricante(): string { return this.nmbFabricante; }
-    public set setNmbFabricante(value: string) { this.nmbFabricante = value; }
+    @Column({ nullable: true })
+    nombreGrupoProducto: string;
 
-    public get getNmbProveedor(): string { return this.nmbProveedor; }
-    public set setNmbProveedor(value: string) { this.nmbProveedor = value; }
+    @Column({ nullable: true })
+    skuFabricante: string;
 
-    public get getPeso(): number { return this.peso; }
-    public set setPeso(value: number) { this.peso = value; }
+    @Column({ nullable: true })
+    nmbFabricante: string;
 
-    public get getUm(): string { return this.um; }
-    public set setUm(value: string) { this.um = value; }
+    @Column({ nullable: true })
+    nmbProveedor: string;
 
-    public get getPrecioLista(): number { return this.precioLista; }
-    public set setPrecioLista(value: number) { this.precioLista = value; }
+    @Column("float", { nullable: true })
+    peso: number;
 
-    public get getCodBarra(): string { return this.codBarra; }
-    public set setCodBarra(value: string) { this.codBarra = value; }
+    @Column({ nullable: true })
+    um: string;
 
-    public get getSkuAlternante(): string { return this.skuAlternante; }
-    public set setSkuAlternante(value: string) { this.skuAlternante = value; }
+    @Column("float", { nullable: true })
+    precioLista: number;
 
+    @Column({ nullable: true })
+    codBarra: string;
 
-    public registrarGrupoProduco(): void { }
+    @Column({ nullable: true })
+    skuAlternante: string;
+
+    // You can keep the methods as they are, or implement them as needed
+    public registrarGrupoProducto(): void { }
     public registrarProducto(): void { }
     public registrarProveedorProducto(): void { }
     public registrarPrecioBaseProducto(): void { }

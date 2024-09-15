@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import { DataSource } from 'typeorm';
+import { Producto } from './models/Producto';
 
 dotenv.config();
 
@@ -13,7 +14,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Database connection
-
 const AppDataSource = new DataSource({
     type: "postgres",
     host: "localhost",
@@ -21,7 +21,7 @@ const AppDataSource = new DataSource({
     username: "postgres",
     password: "postgres",
     database: "practico1-db",
-    entities: [],
+    entities: [Producto],
     synchronize: true,
     logging: true
 })
@@ -39,15 +39,6 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Hello, World!');
 });
 
-app.get('/api/users', (req: Request, res: Response) => {
-    // Placeholder for getting users
-    res.json({ users: [] });
-});
-
-app.post('/api/users', (req: Request, res: Response) => {
-    // Placeholder for creating a user
-    res.status(201).json({ message: 'User created' });
-});
 
 // Start the server
 app.listen(port, () => {
