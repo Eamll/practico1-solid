@@ -1,8 +1,12 @@
+import { v4 as uuidv4 } from 'uuid';
 import { Entity, Column, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Producto {
-    @PrimaryColumn()
+    @PrimaryColumn({ type: "uuid" })
+    id: string = uuidv4();
+
+    @Column({ nullable: true })
     sku: string;
 
     @Column()

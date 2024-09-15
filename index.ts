@@ -3,6 +3,8 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import { DataSource } from 'typeorm';
 import { Producto } from './models/Producto';
+import { createProducto, getAllProductos, getProductoById, updateProducto, deleteProducto } from './controllers/producto.controller';
+import { AppDataSource } from './db/AppDataSource';
 
 dotenv.config();
 
@@ -12,19 +14,6 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Database connection
-const AppDataSource = new DataSource({
-    type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "postgres",
-    password: "postgres",
-    database: "practico1-db",
-    entities: [Producto],
-    synchronize: true,
-    logging: true
-})
 
 AppDataSource.initialize()
     .then(() => {
@@ -38,6 +27,13 @@ AppDataSource.initialize()
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello, World!');
 });
+
+// CRUD endpoints for Producto
+app.post('/productos', createProducto);
+app.get('/productos', getAllProductos);
+app.get('/productos/:id', getProductoById);
+app.put('/productos/:id', updateProducto);
+app.delete('/productos/:id', deleteProducto);
 
 
 // Start the server
