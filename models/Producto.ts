@@ -6,7 +6,7 @@ export class Producto {
     @PrimaryColumn({ type: "uuid" })
     id: string = uuidv4();
 
-    @Column({ nullable: true })
+    @Column("text", { nullable: true })
     sku: string;
 
     @Column("text")
@@ -14,21 +14,6 @@ export class Producto {
 
     @Column("text", { nullable: true })
     nombreExtranjero: string;
-
-    @Column("text", { nullable: true })
-    codGrupoProducto: string;
-
-    @Column("text", { nullable: true })
-    nombreGrupoProducto: string;
-
-    @Column("text", { nullable: true })
-    skuFabricante: string;
-
-    @Column("text", { nullable: true })
-    nmbFabricante: string;
-
-    @Column("text", { nullable: true })
-    nmbProveedor: string;
 
     @Column("float", { nullable: true })
     peso: number;
@@ -46,9 +31,9 @@ export class Producto {
     skuAlternante: string;
 
     // You can keep the methods as they are, or implement them as needed
-    public registrarGrupoProducto(): void { }
-    public registrarProducto(): void { }
-    public registrarProveedorProducto(): void { }
-    public registrarPrecioBaseProducto(): void { }
-    public registrarMinimoMaximoMRPAlmacen(): void { }
+    // public registrarGrupoProducto(): void { }
+    // public registrarProducto(): void { }
+    // public registrarProveedorProducto(): void { }
+    // public registrarPrecioBaseProducto(): void { }
+    // public registrarMinimoMaximoMRPAlmacen(): void { }
 }
