@@ -1,7 +1,8 @@
 // data-source.ts
 
 import { DataSource } from 'typeorm';
-import { Producto } from '../models/Producto';
+import { Producto } from '../Catalogo/models/Producto';
+
 
 
 export const AppDataSource = new DataSource({

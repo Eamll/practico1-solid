@@ -1,11 +1,12 @@
 import 'reflect-metadata';
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
-import { DataSource } from 'typeorm';
-import { Producto } from './models/Producto';
-import { createProducto, getAllProductos, getProductoById, updateProducto, deleteProducto } from './controllers/producto.controller';
+
 import { AppDataSource } from './db/AppDataSource';
 import path from 'path';
+import { ProductoController } from './Catalogo/controllers/producto.controller';
+import { ProductoService } from './Catalogo/services/producto.service';
+
 dotenv.config();
 
 const app: Express = express();
@@ -28,13 +29,15 @@ app.get('/', (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, 'view', 'index.html'));
 });
 
+const productoService = new ProductoService();
+const productoController = new ProductoController(productoService);
 
 // CRUD endpoints for Producto
-app.post('/productos', createProducto);
-app.get('/productos', getAllProductos);
-app.get('/productos/:id', getProductoById);
-app.put('/productos/:id', updateProducto);
-app.delete('/productos/:id', deleteProducto);
+app.post('/productos', productoController.create);
+app.get('/productos', productoController.readAll);
+app.get('/productos/:id', productoController.readOne);
+app.put('/productos/:id', productoController.update);
+app.delete('/productos/:id', productoController.delete);
 
 
 // Start the server
