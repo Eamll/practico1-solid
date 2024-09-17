@@ -1,6 +1,6 @@
 import { ICrudController } from "../../shared/controller.interface";
 import { Producto } from "../models/Producto";
 
-export interface IProductController extends ICrudController<Producto> {
+export interface IProductoController extends ICrudController<Producto> {
 
 }

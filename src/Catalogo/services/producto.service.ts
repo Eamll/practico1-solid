@@ -1,47 +1,30 @@
 // src/Catalogo/services/producto.service.ts
 
-import { Repository } from 'typeorm';
+
 import { Producto } from '../models/Producto';
 import { CreateProductoInput } from '../entities/inputs/create-producto.input';
-import { AppDataSource } from '../../db/AppDataSource';
+import { IProductoRepository } from '../entities/repositories/IProducto.repository.interface';
 
 export class ProductoService {
-    private productoRepository: Repository<Producto>;
-
-    constructor() {
-        this.productoRepository = AppDataSource.getRepository(Producto);
-    }
+    constructor(private productoRepository: IProductoRepository) { }
 
     async create(input: CreateProductoInput): Promise<Producto> {
-        const producto = this.productoRepository.create(input);
-        return await this.productoRepository.save(producto);
+        return await this.productoRepository.create(input);
     }
 
     async readAll(): Promise<Producto[]> {
-        return await this.productoRepository.find();
+        return await this.productoRepository.readAll();
     }
 
     async readOne(id: string): Promise<Producto | null> {
-        return await this.productoRepository.findOne({ where: { id } });
+        return await this.productoRepository.readOne(id);
     }
 
     async update(id: string, input: Partial<Producto>): Promise<Producto | null> {
-        const producto = await this.productoRepository.findOne({ where: { id } });
-        if (!producto) {
-            return null;
-        }
-        this.productoRepository.merge(producto, input);
-        return await this.productoRepository.save(producto);
+        return await this.productoRepository.update(id, input);
     }
 
     async delete(id: string): Promise<boolean> {
-        const producto = await this.productoRepository.findOne({ where: { id } });
-        if (!producto) {
-            return false;
-        }
-        await this.productoRepository.remove(producto);
-        return true;
+        return await this.productoRepository.delete(id);
     }
 }
-
-export default new ProductoService();

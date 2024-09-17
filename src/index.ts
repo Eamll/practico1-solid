@@ -6,6 +6,7 @@ import { AppDataSource } from './db/AppDataSource';
 import path from 'path';
 import { ProductoController } from './Catalogo/controllers/producto.controller';
 import { ProductoService } from './Catalogo/services/producto.service';
+import { ProductoTypeOrmRepository } from './Catalogo/entities/repositories/typeorm/Producto.typeorm.repository';
 
 dotenv.config();
 
@@ -29,16 +30,17 @@ app.get('/', (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, 'view', 'index.html'));
 });
 
-const productoService = new ProductoService();
+const productoRepository = new ProductoTypeOrmRepository();
+const productoService = new ProductoService(productoRepository);
 const productoController = new ProductoController(productoService);
 
 // CRUD endpoints for Producto
-app.post('/productos', productoController.create);
-app.get('/productos', productoController.readAll);
-app.get('/productos/:id', productoController.readOne);
-app.put('/productos/:id', productoController.update);
-app.delete('/productos/:id', productoController.delete);
-
+// CRUD endpoints for Producto
+app.post('/productos', (req, res) => productoController.create(req, res));
+app.get('/productos', (req, res) => productoController.readAll(req, res));
+app.get('/productos/:id', (req, res) => productoController.readOne(req, res));
+app.put('/productos/:id', (req, res) => productoController.update(req, res));
+app.delete('/productos/:id', (req, res) => productoController.delete(req, res));
 
 // Start the server
 app.listen(port, () => {

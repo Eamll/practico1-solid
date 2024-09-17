@@ -3,8 +3,6 @@
 import { DataSource } from 'typeorm';
 import { Producto } from '../Catalogo/models/Producto';
 
-
-
 export const AppDataSource = new DataSource({
     type: "postgres",
     host: "localhost",
@@ -14,5 +12,5 @@ export const AppDataSource = new DataSource({
     database: "practico1-db",
     entities: [Producto],
     synchronize: true,
-    logging: true
+    logging: true,
 });
