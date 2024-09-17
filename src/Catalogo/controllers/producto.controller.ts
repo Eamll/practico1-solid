@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { CreateProductoInput } from '../entities/inputs/create-producto.input';
 import { validate } from 'class-validator';
 import { plainToClass } from 'class-transformer';
-import { IProductoController } from '../entities/IProducto.controller.interface';
+import { IProductoController } from '../interfaces/controllers/IProducto.controller.interface';
 import { ProductoService } from '../services/producto.service';
 
 export class ProductoController implements IProductoController {

@@ -1,5 +1,5 @@
 import { Producto } from "../../models/Producto";
-import { CreateProductoInput } from "../inputs/create-producto.input";
+import { CreateProductoInput } from "../../entities/inputs/create-producto.input";
 
 
 export interface IProductoRepository {

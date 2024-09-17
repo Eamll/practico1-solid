@@ -3,7 +3,7 @@
 
 import { Producto } from '../models/Producto';
 import { CreateProductoInput } from '../entities/inputs/create-producto.input';
-import { IProductoRepository } from '../entities/repositories/IProducto.repository.interface';
+import { IProductoRepository } from '../interfaces/repositories/IProducto.repository.interface';
 
 export class ProductoService {
     constructor(private productoRepository: IProductoRepository) { }

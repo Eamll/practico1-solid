@@ -1,8 +1,8 @@
 import { Repository } from 'typeorm';
-import { IProductoRepository } from '../IProducto.repository.interface';
-import { Producto } from '../../../models/Producto';
-import { CreateProductoInput } from '../../inputs/create-producto.input';
-import { AppDataSource } from '../../../config/database';
+import { IProductoRepository } from '../../interfaces/repositories/IProducto.repository.interface';
+import { Producto } from '../../models/Producto';
+import { CreateProductoInput } from '../../entities/inputs/create-producto.input';
+import { AppDataSource } from '../../config/database';
 
 
 export class ProductoTypeOrmRepository implements IProductoRepository {

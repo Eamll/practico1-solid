@@ -1,5 +1,5 @@
 import { Express } from 'express';
-import { ProductoTypeOrmRepository } from '../entities/repositories/typeorm/Producto.typeorm.repository';
+import { ProductoTypeOrmRepository } from '../repositories/typeorm/Producto.typeorm.repository';
 import { ProductoService } from '../services/producto.service';
 import { ProductoController } from '../controllers/producto.controller';
 
