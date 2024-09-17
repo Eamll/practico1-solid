@@ -1,10 +1,8 @@
-// src/Catalogo/repositories/typeorm/ProductoTypeOrmRepository.ts
-
 import { Repository } from 'typeorm';
 import { IProductoRepository } from '../IProducto.repository.interface';
 import { Producto } from '../../../models/Producto';
-import { AppDataSource } from '../../../../db/AppDataSource';
 import { CreateProductoInput } from '../../inputs/create-producto.input';
+import { AppDataSource } from '../../../config/database';
 
 
 export class ProductoTypeOrmRepository implements IProductoRepository {

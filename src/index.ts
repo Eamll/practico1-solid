@@ -1,7 +1,8 @@
 import 'reflect-metadata';
 import dotenv from 'dotenv';
-import { AppDataSource } from './db/AppDataSource';
-import { startServer } from './Catalogo/config/database';
+
+import { AppDataSource } from './Catalogo/config/database';
+import { startServer } from './Catalogo/config/server';
 
 
 dotenv.config();

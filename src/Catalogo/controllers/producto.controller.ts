@@ -1,5 +1,3 @@
-// src/Catalogo/controllers/producto.controller.ts
-
 import { Request, Response } from 'express';
 import { CreateProductoInput } from '../entities/inputs/create-producto.input';
 import { validate } from 'class-validator';

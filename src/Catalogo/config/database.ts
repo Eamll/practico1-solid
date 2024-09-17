@@ -1,18 +1,14 @@
-import express, { Express } from 'express';
-import { setupRoutes } from '../routes';
+import { DataSource } from 'typeorm';
+import { Producto } from '../models/Producto';
 
-const app: Express = express();
-const port = process.env.PORT || 3000;
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-setupRoutes(app);
-
-export const startServer = () => {
-    app.listen(port, () => {
-        console.log(`Server is running on port ${port}`);
-    });
-};
-
-export default app;
+export const AppDataSource = new DataSource({
+    type: "postgres",
+    host: "localhost",
+    port: 5432,
+    username: "postgres",
+    password: "postgres",
+    database: "practico1-db",
+    entities: [Producto],
+    synchronize: true,
+    logging: true,
+});
