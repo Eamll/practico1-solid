@@ -4,10 +4,10 @@ import { Request, Response } from 'express';
 import { CreateProductoInput } from '../entities/inputs/create-producto.input';
 import { validate } from 'class-validator';
 import { plainToClass } from 'class-transformer';
-import { IProductController } from '../entities/product.controller.interface';
+import { IProductoController } from '../entities/IProducto.controller.interface';
 import { ProductoService } from '../services/producto.service';
 
-export class ProductoController implements IProductController {
+export class ProductoController implements IProductoController {
     private productoService: ProductoService;
     constructor(productoService: ProductoService) {
         this.productoService = productoService;
