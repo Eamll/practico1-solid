@@ -1,4 +1,4 @@
-import { IsString, IsNumber, IsOptional, Min, MaxLength } from 'class-validator';
+import { IsString, IsNumber, IsOptional, Min, MaxLength, IsNumberString } from 'class-validator';
 
 export class CreateProductoInput {
     @IsOptional()
@@ -41,8 +41,7 @@ export class CreateProductoInput {
     nmbProveedor?: string;
 
     @IsOptional()
-    @IsNumber()
-    @Min(0)
+    @IsNumberString()
     peso?: number;
 
     @IsOptional()
@@ -51,8 +50,7 @@ export class CreateProductoInput {
     um?: string;
 
     @IsOptional()
-    @IsNumber()
-    @Min(0)
+    @IsNumberString()
     precioLista?: number;
 
     @IsOptional()
