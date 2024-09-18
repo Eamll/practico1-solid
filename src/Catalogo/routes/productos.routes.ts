@@ -1,17 +1,15 @@
 import { Express } from 'express';
 import { ProductoTypeOrmRepository } from '../repositories/typeorm/Producto.typeorm.repository';
-import { ProductoService } from '../services/producto.service';
-import { ProductoController } from '../controllers/producto.controller';
+import { ProductoController } from '../controllers/ProductoController';
+import { FabricanteTypeOrmRepository } from '../repositories/typeorm/Fabricante.typeorm.repository';
 
 
 export const setupProductoRoutes = (app: Express) => {
     const productoRepository = new ProductoTypeOrmRepository();
-    const productoService = new ProductoService(productoRepository);
-    const productoController = new ProductoController(productoService);
+    const fabricanteRepository = new FabricanteTypeOrmRepository();
+    const productoController = new ProductoController(productoRepository, fabricanteRepository);
 
-    app.post('/productos', (req, res) => productoController.create(req, res));
-    app.get('/productos', (req, res) => productoController.readAll(req, res));
-    app.get('/productos/:id', (req, res) => productoController.readOne(req, res));
-    app.put('/productos/:id', (req, res) => productoController.update(req, res));
-    app.delete('/productos/:id', (req, res) => productoController.delete(req, res));
+    app.get('/productos', (req, res) => productoController.index(req, res));
+    app.get('/productos/registrar', (req, res) => productoController.create(req, res));
+    app.post('/productos/registrar', (req, res) => productoController.store(req, res));
 };

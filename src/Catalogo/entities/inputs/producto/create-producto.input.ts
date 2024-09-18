@@ -1,4 +1,4 @@
-import { IsString, IsNumber, IsOptional, Min, MaxLength, IsNumberString } from 'class-validator';
+import { IsString, IsOptional, MaxLength, IsNumberString } from 'class-validator';
 
 export class CreateProductoInput {
     @IsOptional()

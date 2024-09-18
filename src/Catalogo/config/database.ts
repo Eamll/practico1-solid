@@ -1,5 +1,8 @@
 import { DataSource } from 'typeorm';
-import { Producto } from '../models/Producto';
+import { Fabricante } from '../entities/Fabricante';
+import { Producto } from '../entities/Producto';
+import { GrupoProducto } from '../entities/GrupoProducto';
+import { Proveedor } from '../entities/Proveedor';
 
 export const AppDataSource = new DataSource({
     type: "postgres",
@@ -8,7 +11,7 @@ export const AppDataSource = new DataSource({
     username: "postgres",
     password: "postgres",
     database: "practico1-db",
-    entities: [Producto],
+    entities: [Fabricante, GrupoProducto, Proveedor, Producto],
     synchronize: true,
     logging: true,
 });
