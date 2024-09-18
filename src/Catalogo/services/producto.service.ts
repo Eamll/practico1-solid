@@ -1,6 +1,3 @@
-// src/Catalogo/services/producto.service.ts
-
-
 import { Producto } from '../models/Producto';
 import { CreateProductoInput } from '../entities/inputs/create-producto.input';
 import { IProductoRepository } from '../interfaces/repositories/IProducto.repository.interface';
